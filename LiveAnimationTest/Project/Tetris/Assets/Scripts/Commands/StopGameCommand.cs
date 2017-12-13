@@ -15,9 +15,6 @@ namespace Tetris
 
         public override void Execute()
         {
-            Field.ClearField();
-            FigureGenerator.ClearFigures();
-
             UiManager.GetHUDPanel().Close();
             UiManager.GetEndGamePanel().Open();
         }

@@ -16,6 +16,12 @@ namespace Tetris
         [Inject]
         public IAudioManager AudioManager { get; private set; }
 
+        [Inject]
+        public IField Field { get; private set; }
+
+        [Inject]
+        public IFigureGenerator FigureGenerator { get; private set; }
+
         public override void OnRegister()
         {
             View.OnOpenSignal.AddListener(OnOpen);
@@ -36,6 +42,10 @@ namespace Tetris
         private void OnEndClick()
         {
             AudioManager.PlayOnce("Click");
+
+            Field.ClearField();
+            FigureGenerator.ClearFigures();
+
             View.Close();
             UiManager.GetStartPanel().Open();
         }
