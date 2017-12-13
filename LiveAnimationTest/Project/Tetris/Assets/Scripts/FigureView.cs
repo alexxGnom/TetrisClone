@@ -20,6 +20,8 @@ namespace Tetris
 
         void SetStartScale();
 
+        void Spawn(Vector3 position, Transform parent);
+
         void Despawn();
     }
 
@@ -103,6 +105,17 @@ namespace Tetris
             transform.localScale = Vector3.one * _startScale;
         }
 
+        public void Spawn(Vector3 position, Transform parent = null)
+        {
+            if (parent != null)
+                transform.parent = parent;
+
+            SetToPosition(position);
+            _startPos = position;
+
+            SetStartScale();
+        }
+
         public void Despawn()
         {
             Destroy(this.gameObject);
@@ -127,7 +140,6 @@ namespace Tetris
 
         public void OnStartDrag()
         {
-            _startPos = transform.position;
             transform.localScale = Vector3.one;
         }
 

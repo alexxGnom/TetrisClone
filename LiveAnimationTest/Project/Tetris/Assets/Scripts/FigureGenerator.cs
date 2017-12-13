@@ -49,9 +49,7 @@ namespace Tetris
                 var figure = Instantiate(_prefabs[Random.Range(0, _prefabs.Length)]).GetComponent<FigureView>();
 
                 figure.Rotate(Random.Range(0, 4));
-                figure.transform.parent = _slotAnchors[i];
-                figure.SetStartScale();
-                figure.SetToPosition(_slotAnchors[i].position);
+                figure.Spawn(_slotAnchors[i].position, _slotAnchors[i]);
                 _figures.Add(figure);
             }
         }
